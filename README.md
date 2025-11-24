@@ -2,16 +2,49 @@
 
 CareBridge is a small Django project for managing care workflows and basic patient–provider interactions.
 
-Quick start (Linux)
-- Create and activate virtualenv:
+# Quick start (Linux)
+
+## Virtual environment
+
+Create and activate virtualenv
+
+  ```bash
   python3 -m venv .venv
   source .venv/bin/activate
-- Install dependencies:
-  pip install django
-- Run development server:
-  python manage.py runserver
+  ```
+## Dependencies
 
-Project structure
+Install django
+
+  ```bash
+  pip install django
+  ```
+
+## Database migrations
+
+Run Django migrations to create/update the database schema:
+
+```bash
+python manage.py migrate
+```
+
+## Create a superuser
+
+Create an admin account to access the Django admin:
+
+```bash
+python manage.py createsuperuser
+```
+
+## Run
+
+Run development server
+
+  ```bash
+  python manage.py runserver
+  ```
+
+# Project structure
 ```
 CareBridgeProject/
 ├─ manage.py
@@ -28,6 +61,11 @@ CareBridgeProject/
    ├─ templates/
    │  ├─ index.html
    │  ├─ starter-page.html
+   │  ├─ about.html
+   │  ├─ services.html
+   │  ├─ doctors.html
+   │  ├─ departments.html
+   │  ├─ appointment.html
    │  └─ ...
    ├─ migrations/
    ├─ __init__.py
