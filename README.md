@@ -24,7 +24,7 @@ CareBridgeProject/
    ├─ urls.py
    ├─ wsgi.py
    └─ asgi.py
-└─ careapps/                      # application packages (example)
+└─ careapp/                      # application packages (example)
    ├─ templates/
    │  ├─ index.html
    │  ├─ starter-page.html
