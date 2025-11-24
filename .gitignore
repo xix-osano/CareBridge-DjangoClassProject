@@ -1,0 +1,100 @@
+# Byte-compiled / optimization
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Virtual environments
+env/
+venv/
+ENV/
+.venv/
+.venv3/
+pipenv/
+
+# Python build / packaging
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+.pytest_cache/
+
+# Django
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+media/
+# directory used by collectstatic
+staticfiles/
+# common static root name
+static_root/
+# don't ignore app migrations themselves, only caches
+**/migrations/__pycache__/
+
+# Environment / secrets
+.env
+.env.*
+*.env
+
+# Editors / IDEs
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Node / frontend
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+
+# Celery
+celerybeat-schedule
+celerybeat.pid
+
+# Sphinx / docs
+docs/_build/
+
+# Distribution artifacts
+*.egg
+*.egg-info
+dist/
+build/
+
+# Misc
+*.pot
+*.mo
+*.log
+*.bak
+*.swp
+*.tmp
+*.cache
