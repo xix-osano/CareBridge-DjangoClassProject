@@ -18,18 +18,18 @@ def services(request):
 
 def Appoint(request):
     if request.method == "POST":
-        Appointment(
-            name=request.POST['name'],
-            email=request.POST['email'],
-            phone=request.POST['phone'],
-            datetime=request.POST['date'],
-            department=request.POST['department'],
-            doctor=request.POST['doctor'],
-            message=request.POST['message'],
-        ).save()
-        messages.success(request, 'Your appointment has been booked successfully!!')
-        return redirect('/appointment')
-    return render(request, 'appointment.html')
+        Appointment.objects.create(
+            name=request.POST.get("name"),
+            email=request.POST.get("email"),
+            phone=request.POST.get("phone"),
+            datetime=request.POST.get("datetime"),
+            department=request.POST.get("department"),
+            doctor=request.POST.get("doctor"),
+            message=request.POST.get("message","")
+        )
+        messages.success(request, "Your appointment has been scheduled.")
+        return redirect("appointment")  # ensure url name matches
+    return render(request, "appointment.html")
 
 def departments(request):
     return render(request, 'departments.html')
