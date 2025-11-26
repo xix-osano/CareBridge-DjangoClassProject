@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.contrib import messages
 from careapp.models import *
 
 # Create your views here.
@@ -18,14 +19,15 @@ def services(request):
 def Appoint(request):
     if request.method == "POST":
         Appointment(
-            name=request.POST.get('name'),
-            email=request.POST.get('email'),
-            phone=request.POST.get('phone'),
-            datetime=request.POST.get('date'),
-            department=request.POST.get('department'),
-            doctor=request.POST.get('doctor'),
-            message=request.POST.get('message'),
+            name=request.POST['name'],
+            email=request.POST['email'],
+            phone=request.POST['phone'],
+            datetime=request.POST['date'],
+            department=request.POST['department'],
+            doctor=request.POST['doctor'],
+            message=request.POST['message'],
         ).save()
+        messages.success(request, 'Your appointment has been booked successfully!!')
         return redirect('/appointment')
     return render(request, 'appointment.html')
 
@@ -34,3 +36,7 @@ def departments(request):
 
 def doctors(request):
     return render(request, 'doctors.html')
+
+def show(request):
+    appointments = Appointment.objects.all()
+    return render(request, 'show.html', {"appointments": appointments})

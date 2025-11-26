@@ -1,0 +1,53 @@
+{% extends 'starter-page.html' %}
+
+{% load static %}
+
+{% block title %} Booked Appointments - CareBridge {% endblock %}
+
+{% block content %}
+    <!-- Show Appointments Section -->
+    <section id="show-appointments" class="show-appointments section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Appointments</h2>
+        <p>List of all booked appointments</p>
+      </div><!-- End Section Title -->
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Email</th>
+              <th scope="col">Phone</th>
+              <th scope="col">Date & Time</th>
+              <th scope="col">Department</th>
+              <th scope="col">Doctor</th>
+              <th scope="col">Message</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for appointment in appointments %}
+            <tr>
+              <td>{{ appointment.name }}</td>
+              <td>{{ appointment.email }}</td>
+              <td>{{ appointment.phone }}</td>
+              <td>{{ appointment.datetime }}</td>
+              <td>{{ appointment.department }}</td>
+              <td>{{ appointment.doctor }}</td>
+              <td>{{ appointment.message }}</td>
+              <td>
+                <a href="{% url 'appointment' %}" class="btn btn-primary">Edit</a>
+                <a href="{% url 'delete_appointment' appointment.id %}" class="btn btn-danger">Delete</a>
+                <a href="" class="btn btn-success">Pay</a>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+
+      </div>
+    </section><!-- End Show Appointments Section -->
+{% endblock %}
