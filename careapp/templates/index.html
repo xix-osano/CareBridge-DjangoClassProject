@@ -691,6 +691,63 @@
   <!-- Preloader -->
   <div id="preloader"></div>
 
+  <!-- Success Modal -->
+  <div class="modal fade" id="appointmentSuccessModal" tabindex="-1" aria-labelledby="appointmentSuccessLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content rounded-4">  <!-- rounded corners -->
+        <div class="modal-header">
+          <h5 class="modal-title" id="appointmentSuccessLabel">Success</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          {% for message in messages %}
+            {% if 'success' in message.tags %}
+              {{ message }}
+            {% endif %}
+          {% endfor %}
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    /* Translucent "glassy" modal with rounded corners */
+    #appointmentSuccessModal .modal-content {
+      background: rgba(255, 255, 255, 0.55);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-radius: 1rem;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.15);
+    }
+    #appointmentSuccessModal .modal-header,
+    #appointmentSuccessModal .modal-footer {
+      background: transparent;
+      border: 0;
+    }
+    /* Softer backdrop */
+    .modal-backdrop.show {
+      opacity: 0.2;
+    }
+  </style>
+
+  {% if messages %}
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    {% for message in messages %}
+      {% if 'success' in message.tags %}
+        if (window.bootstrap) {
+          new bootstrap.Modal(document.getElementById('appointmentSuccessModal')).show();
+        }
+      {% endif %}
+    {% endfor %}
+  });
+  </script>
+  {% endif %}
+
   <!-- Vendor JS Files -->
   <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js'%}"></script>
   <script src="{% static 'assets/vendor/php-email-form/validate.js'%}"></script>
