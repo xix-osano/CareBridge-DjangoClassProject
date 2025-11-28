@@ -8,6 +8,10 @@
     <!-- Show Appointments Section -->
     <section id="show-appointments" class="show-appointments section">
 
+      {% for message in messages %}
+        <div class="alert alert-success text-center">{{ message }}</div>
+      {% endfor %}
+
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
         <h2>Appointments</h2>
@@ -39,8 +43,8 @@
               <td>{{ appointment.doctor }}</td>
               <td>{{ appointment.message }}</td>
               <td>
-                <a href="{% url 'appointment' %}" class="btn btn-primary">Edit</a>
-                <a href="" class="btn btn-danger">Delete</a>
+                <a href="/edit/{{appointment.id}}" class="btn btn-primary">Edit</a>
+                <a href="/delete/{{appointment.id}}" class="btn btn-danger">Delete</a>
                 <a href="" class="btn btn-success">Accept</a>
               </td>
             </tr>

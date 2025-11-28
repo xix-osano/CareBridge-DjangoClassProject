@@ -1,0 +1,57 @@
+{% extends 'starter-page.html' %}
+
+{% load static %}
+
+{% block title %} Edit Appointment - CareBridge {% endblock %}
+
+{% block content %}
+    <!-- Edit Appointment Section -->
+    <section id="edit-appointment" class="edit-appointment section">
+
+      {% for message in messages %}
+        <div class="alert alert-success text-center">{{ message }}</div>
+      {% endfor %}
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Edit Appointment</h2>
+        <p>Modify the details of your appointment</p>
+      </div><!-- End Section Title -->
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <form method="POST">
+          {% csrf_token %}
+          <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="name" name="name" value="{{ appointment.name }}" required>
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" name="email" value="{{ appointment.email }}" required>
+          </div>
+          <div class="mb-3">
+            <label for="phone" class="form-label">Phone</label>
+            <input type="text" class="form-control" id="phone" name="phone" value="{{ appointment.phone }}" required>
+          </div>
+          <div class="mb-3">
+            <label for="datetime" class="form-label">Date & Time</label>
+            <input type="datetime-local" class="form-control" id="datetime" name="datetime" value="{{ appointment.datetime|date:'Y-m-d\TH:i' }}" required>
+          </div>
+          <div class="mb-3">
+            <label for="department" class="form-label">Department</label>
+            <input type="text" class="form-control" id="department" name="department" value="{{ appointment.department }}" required>
+          </div>
+          <div class="mb-3">
+            <label for="doctor" class="form-label">Doctor</label>
+            <input type="text" class="form-control" id="doctor" name="doctor" value="{{ appointment.doctor }}" required>
+          </div>
+          <div class="mb-3">
+            <label for="message" class="form-label">Message</label>
+            <textarea class="form-control" id="message" name="message" rows="3" required>{{ appointment.message }}</textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Update Appointment</button>
+        </form>
+        </div>
+    </section><!-- End Edit Appointment Section -->
+{% endblock %}
